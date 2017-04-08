@@ -13,7 +13,7 @@ describe("Result", function() {
     expect(result.displayResult(300)).toEqual("Perfect Score")
   });
 
-  it ("returns well played when neither perfect score or gutter game is calles", function() {
+  it ("returns well played when neither perfect score or gutter game is scored", function() {
     expect(result.displayResult(100)).toEqual("Well Played")
   });
 
