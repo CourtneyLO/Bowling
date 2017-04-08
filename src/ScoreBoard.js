@@ -4,6 +4,7 @@ function ScoreBoard() {
   this.currentFrame = [];
   this.MAXSCORE = 10;
   this.MINSCORE = 0;
+  this.TURNSPERFRAME = 2;
 }
 
 ScoreBoard.prototype.firstRoll = function(amount) {
@@ -48,6 +49,14 @@ ScoreBoard.prototype.calculateScore = function(scores) {
 
 ScoreBoard.prototype._spare = function() {
   return this.currentFrame[0] + this.currentFrame[1] === this.MAXSCORE
+};
+
+ScoreBoard.prototype._strike = function() {
+  this.currentFrame[0] === this.MAXSCORE
+};
+
+ScoreBoard.prototype.completeFrame = function() {
+  this.currentFrame.length == 2
 };
 
 ScoreBoard.prototype._displayScore = function(amount) {

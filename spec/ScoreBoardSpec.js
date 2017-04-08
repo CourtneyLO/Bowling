@@ -13,6 +13,10 @@ describe("ScoreBoard", function() {
     expect(scoreBoard.result).toEqual(0);
   });
 
+  it ('initializes with a last roll of 0', function() {
+    expect(scoreBoard.currentFrame).toEqual([]);
+  });
+
   it ('initializes with a max score constant', function() {
     expect(scoreBoard.MAXSCORE).toEqual(10);
   });
@@ -21,10 +25,9 @@ describe("ScoreBoard", function() {
     expect(scoreBoard.MINSCORE).toEqual(0);
   });
 
-  it ('initializes with a last roll of 0', function() {
-    expect(scoreBoard.currentFrame).toEqual([]);
+  it ('initializes with a set turns per frame of 2', function() {
+    expect(scoreBoard.TURNSPERFRAME).toEqual(2);
   });
-
   it ("returns a the inputted string for the first roll of the set", function() {
     expect(scoreBoard.firstRoll("5")).toEqual("5");
   });
