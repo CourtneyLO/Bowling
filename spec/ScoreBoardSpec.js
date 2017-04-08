@@ -13,6 +13,14 @@ describe("ScoreBoard", function() {
     expect(scoreBoard.result).toEqual(0);
   });
 
+  it ('initializes with a max score constant', function() {
+    expect(scoreBoard.MAXSCORE).toEqual(10);
+  });
+
+  it ('initializes with a last roll of 0', function() {
+    expect(scoreBoard.currentFrame).toEqual([]);
+  });
+
   it ("returns a the inputted string for the first roll of the set", function() {
     expect(scoreBoard.firstRoll("5")).toEqual("5");
   });
@@ -25,10 +33,16 @@ describe("ScoreBoard", function() {
     expect(scoreBoard._convertToNumber("5")).toEqual(5);
   })
 
-  it ("adds amount to scores array", function() {
-    scoreBoard.newScore("5");
+  it ("adds first roll to scores array", function() {
+    scoreBoard.firstRoll("5");
     expect(scoreBoard.scores).toEqual([5]);
   })
+
+  it ("adds second roll to scores array", function() {
+    scoreBoard.firstRoll("5");
+    scoreBoard.secondRoll("3")
+    expect(scoreBoard.scores).toEqual([5, 3]);
+  });
 
   it ("adds a score to scores array", function() {
     scoreBoard.firstRoll("5");
@@ -48,6 +62,24 @@ describe("ScoreBoard", function() {
   it ("returns '-' for a miss", function() {
     expect(scoreBoard.firstRoll("0")).toEqual("-")
   });
+
+  it ("returns '/' for a spare", function() {
+    scoreBoard.firstRoll("2");
+    expect(scoreBoard.secondRoll("8")).toEqual("/");
+  });
+
+  it ("adds first score to current frame", function() {
+    scoreBoard.firstRoll("2");
+    expect(scoreBoard.currentFrame).toEqual([2]);
+  });
+
+  it ("adds second score to current frame", function() {
+    scoreBoard.firstRoll("2");
+    scoreBoard.secondRoll("3")
+    expect(scoreBoard.currentFrame).toEqual([2, 3]);
+  });
+
+  
 
 
 
