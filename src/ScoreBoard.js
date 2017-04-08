@@ -21,6 +21,9 @@ ScoreBoard.prototype._convertToNumber = function(amount) {
 
 ScoreBoard.prototype.newScore = function(amount) {
   var score = this._convertToNumber(amount);
+  if (this.currentFrame.length == 2) {
+    this.currentFrame = [];
+  }
   this.currentFrame.push(score)
   this.scores.push(score);
 };

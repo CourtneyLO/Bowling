@@ -75,11 +75,19 @@ describe("ScoreBoard", function() {
 
   it ("adds second score to current frame", function() {
     scoreBoard.firstRoll("2");
-    scoreBoard.secondRoll("3")
+    scoreBoard.secondRoll("3");
     expect(scoreBoard.currentFrame).toEqual([2, 3]);
   });
 
-  
+  it ("has a currentFrame of only two scores", function() {
+    scoreBoard.firstRoll("2");
+    scoreBoard.secondRoll("3");
+    scoreBoard.firstRoll("4");
+    scoreBoard.secondRoll("5");
+    expect(scoreBoard.currentFrame).toEqual([4, 5]);
+  });
+
+
 
 
 
