@@ -5,7 +5,7 @@ function ScoreBoard() {
 
 ScoreBoard.prototype.firstRoll = function(amount) {
   this.newScore(amount);
-  return amount;
+  return this._displayScore(amount);
 };
 
 ScoreBoard.prototype.secondRoll = function(amount) {
@@ -25,3 +25,11 @@ ScoreBoard.prototype.newScore = function(amount) {
 ScoreBoard.prototype.calculateScore = function(scores) {
   return this.result = scores.reduce((a, b) => a + b, 0);
 };
+
+ScoreBoard.prototype._displayScore = function(amount) {
+  if (amount === '10') {
+    return "X";
+  } else {
+    return amount;
+  }
+}
