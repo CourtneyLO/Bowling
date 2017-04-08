@@ -6,7 +6,7 @@ ScoreBoard.prototype.score = function(amount) {
   return amount;
 };
 
-ScoreBoard.prototype._convert = function(amount) {
+ScoreBoard.prototype._convertToNumber = function(amount) {
   return Number(amount);
 };
 

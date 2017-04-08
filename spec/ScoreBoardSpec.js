@@ -14,15 +14,15 @@ describe("ScoreBoard", function() {
   });
 
   it ("convert score into a number", function() {
-    expect(scoreBoard._convert("5")).toEqual(5)
+    expect(scoreBoard._convertToNumber("5")).toEqual(5)
   })
 
   it ("adds amount to scores array", function() {
     scoreBoard.newScore(5)
-    expect(scoreBoard.scores()).toEqual([5])
+    expect(scoreBoard.scores).toEqual([5])
   })
 
-  
+
 
 
 });
