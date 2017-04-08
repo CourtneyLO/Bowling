@@ -41,8 +41,12 @@ describe("ScoreBoard", function() {
     expect(scoreBoard.result).toEqual(67);
   });
 
-  it ("returns an 'X' for a strike", function() {
+  it ("returns 'X' for a strike", function() {
     expect(scoreBoard.firstRoll("10")).toEqual("X");
+  });
+
+  it ("returns '-' for a miss", function() {
+    expect(scoreBoard.firstRoll("0")).toEqual("-")
   });
 
 

@@ -29,6 +29,8 @@ ScoreBoard.prototype.calculateScore = function(scores) {
 ScoreBoard.prototype._displayScore = function(amount) {
   if (amount === '10') {
     return "X";
+  } else if (amount === '0') {
+    return "-"
   } else {
     return amount;
   }
