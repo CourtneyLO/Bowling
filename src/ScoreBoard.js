@@ -3,6 +3,7 @@ function ScoreBoard() {
 }
 
 ScoreBoard.prototype.score = function(amount) {
+  this.newScore(amount);
   return amount;
 };
 
@@ -11,5 +12,6 @@ ScoreBoard.prototype._convertToNumber = function(amount) {
 };
 
 ScoreBoard.prototype.newScore = function(amount) {
-  this.scores.push(amount);
+  var score = this._convertToNumber(amount);
+  this.scores.push(score);
 };

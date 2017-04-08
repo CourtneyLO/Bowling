@@ -18,9 +18,17 @@ describe("ScoreBoard", function() {
   })
 
   it ("adds amount to scores array", function() {
-    scoreBoard.newScore(5)
+    scoreBoard.newScore("5")
     expect(scoreBoard.scores).toEqual([5])
   })
+
+  it ("adds a score to scores array", function() {
+    scoreBoard.score("5")
+    expect(scoreBoard.scores).toEqual([5])
+  });
+
+
+
 
 
 
