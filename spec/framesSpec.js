@@ -9,5 +9,9 @@ describe("Frames", function() {
     expect(frames.count).toEqual(0);
   });
 
+  it("increases the frame count for every two scores added to scoreboard", function() {
+    expect(frames.increaseCount()).toEqual(1);
+  });
+
 
 });
