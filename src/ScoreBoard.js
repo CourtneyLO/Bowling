@@ -1,17 +1,19 @@
 function ScoreBoard() {
   this.scores = [];
   this.result = 0;
-  this.MAXSCORE = 10;
   this.currentFrame = [];
+  this.MAXSCORE = 10;
+  this.MINSCORE = 0;
 }
 
 ScoreBoard.prototype.firstRoll = function(amount) {
-  this.newScore(amount);
+  this._resetCurrentFrame()
+  this.addCurrentScore(amount);
   return this._displayScore(amount);
 };
 
 ScoreBoard.prototype.secondRoll = function(amount) {
-  this.newScore(amount);
+  this.addCurrentScore(amount);
   return this._displayScore(amount);
 }
 
@@ -19,13 +21,20 @@ ScoreBoard.prototype._convertToNumber = function(amount) {
   return Number(amount);
 };
 
-ScoreBoard.prototype.newScore = function(amount) {
+ScoreBoard.prototype.addCurrentScore = function(amount) {
   var score = this._convertToNumber(amount);
+  if (score === this.MAXSCORE) {
+    this.currentFrame.push(score, this.MINSCORE)
+  } else {
+    this.currentFrame.push(score)
+  }
+  return this.scores.push(score);
+};
+
+ScoreBoard.prototype._resetCurrentFrame =  function() {
   if (this.currentFrame.length == 2) {
     this.currentFrame = [];
   }
-  this.currentFrame.push(score)
-  this.scores.push(score);
 };
 
 ScoreBoard.prototype.calculateScore = function(scores) {

@@ -17,6 +17,10 @@ describe("ScoreBoard", function() {
     expect(scoreBoard.MAXSCORE).toEqual(10);
   });
 
+  it ('initializes with a mimum score constant', function() {
+    expect(scoreBoard.MINSCORE).toEqual(0);
+  });
+
   it ('initializes with a last roll of 0', function() {
     expect(scoreBoard.currentFrame).toEqual([]);
   });
@@ -86,6 +90,12 @@ describe("ScoreBoard", function() {
     scoreBoard.secondRoll("5");
     expect(scoreBoard.currentFrame).toEqual([4, 5]);
   });
+
+  it ("it adds 0 for second roll if strike is scored", function() {
+    scoreBoard.firstRoll("10");
+    expect(scoreBoard.currentFrame).toEqual([10, 0]);
+  });
+
 
 
 
