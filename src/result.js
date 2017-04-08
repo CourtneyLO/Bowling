@@ -7,5 +7,8 @@ Result.prototype.displayResult = function(scoreTotal) {
     return "Gutter Game"
   } else if (scoreTotal === 300) {
     return "Perfect Score"
+  } else {
+    return "Well Played"
   }
+
 };

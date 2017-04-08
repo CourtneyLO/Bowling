@@ -9,8 +9,12 @@ describe("Result", function() {
     expect(result.displayResult(0)).toEqual("Gutter Game")
   });
 
-  it ("return perfect score when 300 points are scored", function() {
+  it ("returns perfect score when 300 points are scored", function() {
     expect(result.displayResult(300)).toEqual("Perfect Score")
+  });
+
+  it ("returns well played when neither perfect score or gutter game is calles", function() {
+    expect(result.displayResult(100)).toEqual("Well Played")
   });
 
 });
