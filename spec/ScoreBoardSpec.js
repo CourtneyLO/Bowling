@@ -13,8 +13,12 @@ describe("ScoreBoard", function() {
     expect(scoreBoard.result).toEqual(0);
   });
 
-  it ("returns a the inputted string", function() {
-    expect(scoreBoard.score("5")).toEqual("5");
+  it ("returns a the inputted string for the first roll of the set", function() {
+    expect(scoreBoard.firstRoll("5")).toEqual("5");
+  });
+
+  it ("returns a the inputted string for the second roll of the set", function() {
+    expect(scoreBoard.secondRoll("3")).toEqual("3");
   });
 
   it ("convert score into a number", function() {
@@ -27,7 +31,7 @@ describe("ScoreBoard", function() {
   })
 
   it ("adds a score to scores array", function() {
-    scoreBoard.score("5");
+    scoreBoard.firstRoll("5");
     expect(scoreBoard.scores).toEqual([5]);
   });
 

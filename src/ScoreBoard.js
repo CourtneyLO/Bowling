@@ -3,10 +3,15 @@ function ScoreBoard() {
   this.result = 0;
 }
 
-ScoreBoard.prototype.score = function(amount) {
+ScoreBoard.prototype.firstRoll = function(amount) {
   this.newScore(amount);
   return amount;
 };
+
+ScoreBoard.prototype.secondRoll = function(amount) {
+  this.newScore(amount);
+  return amount
+}
 
 ScoreBoard.prototype._convertToNumber = function(amount) {
   return Number(amount);
