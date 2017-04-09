@@ -21,3 +21,7 @@ TotalScore.prototype.calculateScore = function(scores) {
     this.result = allResults.reduce((a, b) => a + b, 0)
   }
 };
+
+TotalScore.prototype.bonusScore = function(scores) {
+  return scores[scores.length - 1].reduce((a, b) => a + b, 0)
+};

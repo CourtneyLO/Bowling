@@ -51,4 +51,9 @@ describe('TotalScore', function(){
     expect(totalScore.result).toEqual(257);
   });
 
+  it("returns a total score with the bonus roll included", function() {
+    var scores = [[10,0],[10,0],[10,0],[10,0],[10,0],[10,0],[10,0],[10,0],[10,0],[10,10,10]];
+    expect(totalScore.bonusScore(scores)).toEqual(30);
+  });
+
 });
