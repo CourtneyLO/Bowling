@@ -10,16 +10,11 @@ function ScoreBoard(frameCount) {
 }
 
 ScoreBoard.prototype.firstRoll = function(amount) {
-  this.frameCount.increaseCount()
+  this.frameCount.increaseCount() // problem here will increase everytime
   this._resetCurrentFrame()
   this.currentScore(amount);
   return this._displayScore(amount);
 };
-
-ScoreBoard.prototype.secondRoll = function(amount) {
-  this.currentScore(amount);
-  return this._displayScore(amount);
-}
 
 ScoreBoard.prototype._convertToNumber = function(amount) {
   return Number(amount);
@@ -33,13 +28,14 @@ ScoreBoard.prototype.currentScore = function(amount) {
 
 
 ScoreBoard.prototype._resetCurrentFrame =  function() {
-  if (this.currentFrame.length == 2) {
+  if (this._completeFrame()) {
     this.currentFrame = [];
   }
 };
 
 ScoreBoard.prototype._inputCurrentScore = function(score) {
-  if (score === this.MAXSCORE) {
+
+  if (score === this.MAXSCORE && this.frameCount.count < 10) {
     this.currentFrame.push(score, this.MINSCORE)
   } else {
     this.currentFrame.push(score)
@@ -61,10 +57,10 @@ ScoreBoard.prototype._strike = function() {
 };
 
 ScoreBoard.prototype._completeFrame = function() {
-  if (this.frameCount.count === 10 && this.currentFame.last === 10 ) {
-    return this.currentFrame.length == this.MAXTURNSPERFRAME
+  if (this.frameCount.count > 10 && this.currentFrame[this.currentFrame.length - 1] === 10 ) {
+    return this.currentFrame.length === this.MAXTURNSPERFRAME;
   } else {
-    return this.currentFrame.length == this.TURNSPERFRAME
+    return this.currentFrame.length === this.TURNSPERFRAME;
   }
 };
 
