@@ -1,3 +1,5 @@
+'use-strict'
+
 describe('TotalScore', function(){
   var totalScore;
 

@@ -1,3 +1,5 @@
+'use-strict'
+
 describe("BonusBall", function() {
   var bonusBall;
 

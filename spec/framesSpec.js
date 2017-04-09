@@ -1,3 +1,5 @@
+'use-strict'
+
 describe("Frames", function() {
   var frames;
 

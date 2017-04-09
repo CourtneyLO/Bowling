@@ -1,3 +1,5 @@
+'use-strict'
+
 function TotalScore() {
   this.result = [];
   this.scores = []
