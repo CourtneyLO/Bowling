@@ -25,7 +25,7 @@ ScoreBoard.prototype._convertToNumber = function(amount) {
 ScoreBoard.prototype.currentScore = function(amount) {
   var score = this._convertToNumber(amount);
   this._inputCurrentScore(score)
-  return this.scores.push(score);
+  this._addCompletedFrame()
 }
 
 
@@ -43,8 +43,10 @@ ScoreBoard.prototype._inputCurrentScore = function(score) {
   }
 };
 
-ScoreBoard.prototype.calculateScore = function(scores) {
-  return this.result = scores.reduce((a, b) => a + b, 0);
+ScoreBoard.prototype._addCompletedFrame = function() {
+  if (this._completeFrame()) {
+    return this.scores.push(this.currentFrame);
+  }
 };
 
 ScoreBoard.prototype._spare = function() {
@@ -52,11 +54,11 @@ ScoreBoard.prototype._spare = function() {
 };
 
 ScoreBoard.prototype._strike = function() {
-  this.currentFrame[0] === this.MAXSCORE
+  return this.currentFrame[0] === this.MAXSCORE
 };
 
-ScoreBoard.prototype.completeFrame = function() {
-  this.currentFrame.length == 2
+ScoreBoard.prototype._completeFrame = function() {
+  return this.currentFrame.length == this.TURNSPERFRAME
 };
 
 ScoreBoard.prototype._displayScore = function(amount) {

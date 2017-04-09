@@ -40,26 +40,10 @@ describe("ScoreBoard", function() {
     expect(scoreBoard._convertToNumber("5")).toEqual(5);
   })
 
-  it ("adds first roll to scores array", function() {
-    scoreBoard.firstRoll("5");
-    expect(scoreBoard.scores).toEqual([5]);
-  })
-
   it ("adds second roll to scores array", function() {
     scoreBoard.firstRoll("5");
     scoreBoard.secondRoll("3")
-    expect(scoreBoard.scores).toEqual([5, 3]);
-  });
-
-  it ("adds a score to scores array", function() {
-    scoreBoard.firstRoll("5");
-    expect(scoreBoard.scores).toEqual([5]);
-  });
-
-  it ("calculates the score", function() {
-    scoreBoard.scores = [2,3,4,2,5,2,5,1,8,1,3,3,2,3,4,3,6,1,7,2];
-    scoreBoard.calculateScore(scoreBoard.scores);
-    expect(scoreBoard.result).toEqual(67);
+    expect(scoreBoard.scores).toEqual([[5, 3]]);
   });
 
   it ("returns 'X' for a strike", function() {
@@ -94,10 +78,12 @@ describe("ScoreBoard", function() {
     expect(scoreBoard.currentFrame).toEqual([4, 5]);
   });
 
-  it ("it adds 0 for second roll if strike is scored", function() {
+  it ("it adds a strike to the scores array", function() {
     scoreBoard.firstRoll("10");
-    expect(scoreBoard.currentFrame).toEqual([10, 0]);
+    expect(scoreBoard.scores).toEqual([[10, 0]]);
   });
+
+
 
 
 
