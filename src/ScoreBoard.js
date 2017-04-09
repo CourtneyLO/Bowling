@@ -1,13 +1,16 @@
-function ScoreBoard() {
+function ScoreBoard(frameCount) {
+  this.frameCount = frameCount;
   this.scores = [];
   this.result = 0;
   this.currentFrame = [];
   this.MAXSCORE = 10;
   this.MINSCORE = 0;
   this.TURNSPERFRAME = 2;
+  this.MAXTURNSPERFRAME = 3;
 }
 
 ScoreBoard.prototype.firstRoll = function(amount) {
+  this.frameCount.increaseCount()
   this._resetCurrentFrame()
   this.currentScore(amount);
   return this._displayScore(amount);
@@ -58,8 +61,13 @@ ScoreBoard.prototype._strike = function() {
 };
 
 ScoreBoard.prototype._completeFrame = function() {
-  return this.currentFrame.length == this.TURNSPERFRAME
+  if (this.frameCount.count === 10 && this.currentFame.last === 10 ) {
+    return this.currentFrame.length == this.MAXTURNSPERFRAME
+  } else {
+    return this.currentFrame.length == this.TURNSPERFRAME
+  }
 };
+
 
 ScoreBoard.prototype._displayScore = function(amount) {
   if (amount === '10') {

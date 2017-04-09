@@ -1,8 +1,10 @@
 describe("ScoreBoard", function() {
   var scoreBoard;
+  var frames;
 
   beforeEach(function() {
-    scoreBoard = new ScoreBoard();
+    scoreBoard = new ScoreBoard(frames);
+    frames = new Frames;
   });
 
   it ("initializes with an empty score array", function() {
@@ -82,6 +84,7 @@ describe("ScoreBoard", function() {
     scoreBoard.firstRoll("10");
     expect(scoreBoard.scores).toEqual([[10, 0]]);
   });
+
 
 
 
