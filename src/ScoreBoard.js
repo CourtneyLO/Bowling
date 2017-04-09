@@ -1,3 +1,5 @@
+'use-strict'
+
 function ScoreBoard(frameCount) {
   this.frameCount = frameCount;
   this.scores = [];
@@ -57,7 +59,7 @@ ScoreBoard.prototype._strike = function() {
 };
 
 ScoreBoard.prototype._completeFrame = function() {
-  if (this.frameCount.count > 10 && this.currentFrame[this.currentFrame.length - 1] === 10 ) {
+  if (this.frameCount.count > 10 && (this._strike() || this._spare()) ) {
     return this.currentFrame.length === this.MAXTURNSPERFRAME;
   } else {
     return this.currentFrame.length === this.TURNSPERFRAME;
