@@ -61,7 +61,7 @@ describe("ScoreBoard", function() {
     expect(scoreBoard.scores).toEqual([[10, 0]]);
   });
 
-  it ("returns an array of scores with three numbers in the last frame when a strike is scored in that frame", function() {
+  it ("returns a two element array for 9 frames and a three element array for strike", function() {
     var i = 0;
        do {
           scoreBoard.firstRoll(10);
@@ -77,10 +77,23 @@ describe("ScoreBoard", function() {
          scoreBoard.firstRoll(1);
          i++;
        }
-       while (i <= 18);
+       while (i <= 17);
     scoreBoard.firstRoll("1");
     scoreBoard.firstRoll("1");
     expect(scoreBoard.scores).toEqual([[1, 1],[1, 1],[1, 1],[1, 1],[1, 1],[1, 1],[1, 1],[1, 1],[1, 1],[1, 1]]);
+  });
+
+  it ("returns a two element array for 9 frames and a three element array for spare", function() {
+    var i = 0;
+         do {
+           scoreBoard.firstRoll(1);
+           i++;
+         }
+         while (i <= 17);
+    scoreBoard.firstRoll("7");
+    scoreBoard.firstRoll("3");
+    scoreBoard.firstRoll("1");
+    expect(scoreBoard.scores).toEqual([[1, 1],[1, 1],[1, 1],[1, 1],[1, 1],[1, 1],[1, 1],[1, 1],[1, 1],[7, 3, 1]]);
   });
 
 });
