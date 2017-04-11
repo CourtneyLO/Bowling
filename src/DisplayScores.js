@@ -15,6 +15,8 @@ DisplayScores.prototype._displayScore = function(amount, spare) {
     console.log("Hello")
     return '/'
   } else if (amount === '0') {
+    var score = document.getElementById("bowlingScores")
+    return score.innerHTML += "<td>-</td>";
     return "-"
   } else {
     return amount;

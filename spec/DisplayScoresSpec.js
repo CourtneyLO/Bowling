@@ -14,7 +14,7 @@ describe("DisplayScore", function() {
   });
 
   it ("returns '-' for a miss", function() {
-    expect(displayScores.score("0")).toEqual("-")
+    expect(displayScores.score("0")).toMatch("<td>-</td>")
   });
 
   // it ("returns '/' for a spare", function() {
