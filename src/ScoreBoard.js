@@ -13,7 +13,12 @@ function ScoreBoard(frameCount) {
 }
 
 ScoreBoard.prototype.firstRoll = function(amount) {
-  this.currentScore(amount);
+  if (this.scores.length < 10 ) {
+    this.currentScore(amount);
+  } else {
+    throw new Error("Game is over, please start a new game");
+  }
+
   // return this.displayScores.score(amount, this._spare());
 };
 

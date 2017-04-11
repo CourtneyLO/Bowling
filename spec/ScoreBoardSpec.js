@@ -67,7 +67,7 @@ describe("ScoreBoard", function() {
           scoreBoard.firstRoll(10);
          i++;
        }
-       while (i <= 12);
+       while (i <= 11);
     expect(scoreBoard.scores).toEqual([[10,0],[10,0],[10,0],[10,0],[10,0],[10,0],[10,0],[10,0],[10,0],[10,10,10]])
   });
 
@@ -96,4 +96,13 @@ describe("ScoreBoard", function() {
     expect(scoreBoard.scores).toEqual([[1, 1],[1, 1],[1, 1],[1, 1],[1, 1],[1, 1],[1, 1],[1, 1],[1, 1],[7, 3, 1]]);
   });
 
+  it ("returns an error that the scoreboard is full after 10 frames have been bowled", function() {
+     var i = 0;
+        do {
+           scoreBoard.firstRoll(10);
+          i++;
+        }
+        while (i <= 11);
+        expect( function(){ scoreBoard.firstRoll("7") } ).toThrow(new Error("Game is over, please start a new game"))
+      });
 });
