@@ -1,37 +1,40 @@
 'use-strict';
 
 function DisplayScores() {
-  this.scoreLog = [];
+  this.currentFrame = [];
 };
 
 DisplayScores.prototype.score = function(score) {
     return this.displayScore(score);
 }
 
-DisplayScores.prototype.displayScore = function(amount) {
-  if (amount === "10") {
+DisplayScores.prototype.displayScore = function(score) {
+  if (score === "10") {
     return this._setDisplay("X")
   } else {
-    return this._workingOutSpare(amount)
+    return this._addScoreToCurrentFrame(score)
   }
 };
 
-DisplayScores.prototype._workingOutSpare = function(amount) {
-  this._resetLog()
-  this.scoreLog.push(Number(amount))
-  if (this.scoreLog.reduce((a, b) => a + b, 0) === 10) {
-    return this._setDisplay("/")
-  }
-  if (amount === "0") {
-  return this._setDisplay("-")
-} else {
-  return this._setDisplay(amount)
+DisplayScores.prototype._addScoreToCurrentFrame = function(score) {
+  this._resetCurrentFrame()
+  this.currentFrame.push(Number(score))
+  return this._workingOutSpare(score)
 }
+
+DisplayScores.prototype._workingOutSpare = function(score) {
+  if (this.currentFrame.reduce((a, b) => a + b, 0) === 10) {
+    return this._setDisplay("/")
+  } else if (score === "0") {
+    return this._setDisplay("-")
+  } else {
+    return this._setDisplay(score)
+  }
 };
 
-DisplayScores.prototype._resetLog = function(element) {
-  if(this.scoreLog.length > 1) {
-    this.scoreLog = [];
+DisplayScores.prototype._resetCurrentFrame = function() {
+  if(this.currentFrame.length > 1) {
+    this.currentFrame = [];
   }
 };
 
