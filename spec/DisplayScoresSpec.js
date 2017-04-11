@@ -21,8 +21,36 @@ describe("DisplayScore", function() {
     expect(displayScores.score("2")).toMatch("<td>2</td>")
   });
 
-  // it ("returns '/' for a spare", function() {
-  //   displayScores.score("2");
-  //   expect(displayScores.score("8")).toEqual("/");
-  // });
+  it ("displays '/' for a spare", function() {
+    displayScores.score("2");
+    expect(displayScores.score("8")).toMatch("/");
+  });
+
+  it ("resets log after two throws", function() {
+    displayScores.score("2");
+    displayScores.score("8");
+    displayScores.score("5");
+    expect(displayScores.score("5")).toMatch("/");
+  });
+
+  it ("displays a full score board", function() {
+    displayScores.score("2");
+    displayScores.score("8");
+    displayScores.score("0");
+    displayScores.score("6");
+    displayScores.score("10");
+    displayScores.score("8");
+    displayScores.score("2");
+    displayScores.score("7");
+    displayScores.score("3");
+    displayScores.score("6");
+    displayScores.score("1");
+    displayScores.score("10");
+    displayScores.score("6");
+    displayScores.score("1");
+    displayScores.score("5");
+    displayScores.score("5");
+    displayScores.score("1");
+    expect(displayScores.score("5")).toMatch('<td>2</td><td>/</td><td>-</td><td>6</td><td>X</td><td>8</td><td>/</td><td>7</td><td>/</td><td>6</td><td>1</td><td>X</td><td>6</td><td>1</td><td>5</td><td>/</td><td>1</td><td>5</td>');
+  });
 });

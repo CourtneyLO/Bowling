@@ -1,29 +1,41 @@
 'use-strict';
 
 function DisplayScores() {
+  this.scoreLog = [];
 };
 
-DisplayScores.prototype.score = function(score, spare) {
-  return this._displayScore(score, spare);
+DisplayScores.prototype.score = function(score) {
+    return this.displayScore(score);
 }
 
-DisplayScores.prototype._displayScore = function(amount, spare) {
-  if (amount === '10') {
-    var score = document.getElementById("bowlingScores")
-    return score.innerHTML += "<td>X</td>";
-  } else if (spare) {
-    console.log("Hello")
-    return '/'
-  } else if (amount === '0') {
-    var score = document.getElementById("bowlingScores")
-    return score.innerHTML += "<td>-</td>";
-    return "-"
+DisplayScores.prototype.displayScore = function(amount) {
+  if (amount === "10") {
+    return this._setDisplay("X")
   } else {
-    var score = document.getElementById("bowlingScores")
-    return score.innerHTML += "<td>" + amount + "</td>"
+    return this._workingOutSpare(amount)
   }
 };
 
-// DisplayScoreBoard.prototype._spare = function() {
-//
-// };
+DisplayScores.prototype._workingOutSpare = function(amount) {
+  this._resetLog()
+  this.scoreLog.push(Number(amount))
+  if (this.scoreLog.reduce((a, b) => a + b, 0) === 10) {
+    return this._setDisplay("/")
+  }
+  if (amount === "0") {
+  return this._setDisplay("-")
+} else {
+  return this._setDisplay(amount)
+}
+};
+
+DisplayScores.prototype._resetLog = function(element) {
+  if(this.scoreLog.length > 1) {
+    this.scoreLog = [];
+  }
+};
+
+DisplayScores.prototype._setDisplay = function(element) {
+  var score = document.getElementById("bowlingScores")
+  return score.innerHTML += "<td>" + element + "</td>";
+}
