@@ -9,12 +9,16 @@ describe("DisplayScore", function() {
 
   });
 
-  it ("returns 'X' for a strike", function() {
+  it ("displays 'X' for a strike", function() {
     expect(displayScores.score("10")).toMatch('<td>X</td>');
   });
 
-  it ("returns '-' for a miss", function() {
+  it ("displays '-' for a miss", function() {
     expect(displayScores.score("0")).toMatch("<td>-</td>")
+  });
+
+  it("displays 2 for a score of 2", function(){
+    expect(displayScores.score("2")).toMatch("<td>2</td>")
   });
 
   // it ("returns '/' for a spare", function() {

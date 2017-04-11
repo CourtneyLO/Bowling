@@ -19,7 +19,8 @@ DisplayScores.prototype._displayScore = function(amount, spare) {
     return score.innerHTML += "<td>-</td>";
     return "-"
   } else {
-    return amount;
+    var score = document.getElementById("bowlingScores")
+    return score.innerHTML += "<td>" + amount + "</td>"
   }
 };
 
