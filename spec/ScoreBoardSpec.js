@@ -105,4 +105,10 @@ describe("ScoreBoard", function() {
         while (i <= 11);
         expect( function(){ scoreBoard.firstRoll("7") } ).toThrow(new Error("Game is over, please start a new game"))
       });
+
+  it ("gives an option to start a new game", function() {
+    scoreBoard.firstRoll("7");
+    scoreBoard.firstRoll("3");
+    expect(scoreBoard.startNewGame().scores).toEqual([]);
+  });
 });

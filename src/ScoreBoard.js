@@ -28,6 +28,10 @@ ScoreBoard.prototype.currentScore = function(amount) {
   this._addCompletedFrame()
 };
 
+ScoreBoard.prototype.startNewGame = function() {
+  return new ScoreBoard(this.frameCount);
+};
+
 ScoreBoard.prototype._convertToNumber = function(amount) {
   return Number(amount);
 };
