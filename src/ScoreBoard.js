@@ -1,7 +1,8 @@
-'use-strict'
+'use-strict';
 
 function ScoreBoard(frameCount) {
   this.frameCount = frameCount;
+  // this.displayScores = displayScores
   this.scores = [];
   this.result = 0;
   this.currentFrame = [];
@@ -12,31 +13,21 @@ function ScoreBoard(frameCount) {
 }
 
 ScoreBoard.prototype.firstRoll = function(amount) {
-  this.frameCount.increaseCount() // problem here will increase everytime
-  this._resetCurrentFrame()
   this.currentScore(amount);
-  return this._displayScore(amount);
-};
-
-ScoreBoard.prototype._convertToNumber = function(amount) {
-  return Number(amount);
+  // return this.displayScores.score(amount, this._spare());
 };
 
 ScoreBoard.prototype.currentScore = function(amount) {
   var score = this._convertToNumber(amount);
   this._inputCurrentScore(score)
   this._addCompletedFrame()
-}
+};
 
-
-ScoreBoard.prototype._resetCurrentFrame =  function() {
-  if (this._completeFrame()) {
-    this.currentFrame = [];
-  }
+ScoreBoard.prototype._convertToNumber = function(amount) {
+  return Number(amount);
 };
 
 ScoreBoard.prototype._inputCurrentScore = function(score) {
-
   if (score === this.MAXSCORE && this.frameCount.count < 10) {
     this.currentFrame.push(score, this.MINSCORE)
   } else {
@@ -44,9 +35,25 @@ ScoreBoard.prototype._inputCurrentScore = function(score) {
   }
 };
 
+ScoreBoard.prototype._resetCurrentFrame =  function() {
+  if (this._completeFrame()) {
+    this.currentFrame = [];
+  }
+};
+
 ScoreBoard.prototype._addCompletedFrame = function() {
   if (this._completeFrame()) {
-    return this.scores.push(this.currentFrame);
+    this.scores.push(this.currentFrame);
+  }
+  this._resetCurrentFrame()
+  this.frameCount.increaseCount()
+};
+
+ScoreBoard.prototype._completeFrame = function() {
+  if (this.frameCount.count === 10 && (this._strike() || this._spare()) ) {
+    return this.currentFrame.length === this.MAXTURNSPERFRAME;
+  } else {
+    return this.currentFrame.length === this.TURNSPERFRAME;
   }
 };
 
@@ -55,26 +62,17 @@ ScoreBoard.prototype._spare = function() {
 };
 
 ScoreBoard.prototype._strike = function() {
-  return this.currentFrame[0] === this.MAXSCORE
+  return this.currentFrame[0] === this.MAXSCORE;
 };
 
-ScoreBoard.prototype._completeFrame = function() {
-  if (this.frameCount.count > 10 && (this._strike() || this._spare()) ) {
-    return this.currentFrame.length === this.MAXTURNSPERFRAME;
-  } else {
-    return this.currentFrame.length === this.TURNSPERFRAME;
-  }
-};
-
-
-ScoreBoard.prototype._displayScore = function(amount) {
-  if (amount === '10') {
-    return "X";
-  } else if (this._spare()) {
-    return '/'
-  } else if (amount === '0') {
-    return "-"
-  } else {
-    return amount;
-  }
-};
+// ScoreBoard.prototype._displayScore = function(amount) {
+//   if (amount === '10') {
+//     return "X";
+//   } else if (this._spare()) {
+//     return '/'
+//   } else if (amount === '0') {
+//     return "-"
+//   } else {
+//     return amount;
+//   }
+// };

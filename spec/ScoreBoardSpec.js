@@ -1,10 +1,12 @@
 describe("ScoreBoard", function() {
   var scoreBoard;
   var frames;
+  // var displayScores
 
   beforeEach(function() {
     scoreBoard = new ScoreBoard(frames);
-    frames = new Frames;
+    frames = new Frames();
+    // displayScores = new DisplayScores()
   });
 
   it ("initializes with an empty score array", function() {
@@ -31,10 +33,6 @@ describe("ScoreBoard", function() {
     expect(scoreBoard.TURNSPERFRAME).toEqual(2);
   });
 
-  it ("returns a the inputted string for the first roll of the set", function() {
-    expect(scoreBoard.firstRoll("5")).toEqual("5");
-  });
-
   it ("convert score into a number", function() {
     expect(scoreBoard._convertToNumber("5")).toEqual(5);
   })
@@ -45,36 +43,9 @@ describe("ScoreBoard", function() {
     expect(scoreBoard.scores).toEqual([[5, 3]]);
   });
 
-  it ("returns 'X' for a strike", function() {
-    expect(scoreBoard.firstRoll("10")).toEqual("X");
-  });
-
-  it ("returns '-' for a miss", function() {
-    expect(scoreBoard.firstRoll("0")).toEqual("-")
-  });
-
-  it ("returns '/' for a spare", function() {
-    scoreBoard.firstRoll("2");
-    expect(scoreBoard.firstRoll("8")).toEqual("/");
-  });
-
   it ("adds first score to current frame", function() {
     scoreBoard.firstRoll("2");
     expect(scoreBoard.currentFrame).toEqual([2]);
-  });
-
-  it ("adds second score to current frame", function() {
-    scoreBoard.firstRoll("2");
-    scoreBoard.firstRoll("3");
-    expect(scoreBoard.currentFrame).toEqual([2, 3]);
-  });
-
-  it ("has a currentFrame of only two scores", function() {
-    scoreBoard.firstRoll("2");
-    scoreBoard.firstRoll("3");
-    scoreBoard.firstRoll("4");
-    scoreBoard.firstRoll("5");
-    expect(scoreBoard.currentFrame).toEqual([4, 5]);
   });
 
   it ("has a score array of four scores", function() {
@@ -90,56 +61,26 @@ describe("ScoreBoard", function() {
     expect(scoreBoard.scores).toEqual([[10, 0]]);
   });
 
-  it ("returns a current frame with three numbers after a strike has been scored", function() {
+  it ("returns an array of scores with three numbers in the last frame when a strike is scored in that frame", function() {
     var i = 0;
        do {
-         scoreBoard.firstRoll(10)
+          scoreBoard.firstRoll(10);
          i++;
        }
-       while (i <12);
-    expect(scoreBoard.currentFrame).toEqual([10, 10, 10]);
+       while (i <= 12);
+    expect(scoreBoard.scores).toEqual([[10,0],[10,0],[10,0],[10,0],[10,0],[10,0],[10,0],[10,0],[10,0],[10,10,10]])
   });
 
-  it ("returns a two element array in the 10th frame when neither a strike of spare is scored", function() {
+  it ("returns a two element array for 10 frames", function() {
     var i = 0;
        do {
-         scoreBoard.firstRoll(String(Math.floor((Math.random() * 5) + 1)))
+         scoreBoard.firstRoll(1);
          i++;
        }
-       while (i <= 17);
+       while (i <= 18);
     scoreBoard.firstRoll("1");
     scoreBoard.firstRoll("1");
-    expect(scoreBoard.currentFrame).toEqual([1, 1]);
+    expect(scoreBoard.scores).toEqual([[1, 1],[1, 1],[1, 1],[1, 1],[1, 1],[1, 1],[1, 1],[1, 1],[1, 1],[1, 1]]);
   });
-
-  it("returns a three element array in the tenth frame when a spare is scored", function() {
-    var i = 0;
-       do {
-         scoreBoard.firstRoll(String(Math.floor((Math.random() * 5) + 1)))
-         i++;
-       }
-       while (i <= 17);
-    scoreBoard.firstRoll("7");
-    scoreBoard.firstRoll("3");
-    scoreBoard.firstRoll("1");
-    expect(scoreBoard.currentFrame).toEqual([7, 3, 1]);
-  });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 });
