@@ -1,12 +1,14 @@
 describe("ScoreBoard", function() {
   var scoreBoard;
   var frames;
-  // var displayScores
+  var displayScores
 
   beforeEach(function() {
-    scoreBoard = new ScoreBoard(frames);
+    scoreBoard = new ScoreBoard(frames, displayScores);
     frames = new Frames();
-    // displayScores = new DisplayScores()
+    // spyOn(frames, "increaseCount" );
+    displayScores = new DisplayScores();
+    // spyOn(displayScores, "score" );
   });
 
   it ("initializes with an empty score array", function() {
@@ -64,7 +66,7 @@ describe("ScoreBoard", function() {
   it ("returns a two element array for 9 frames and a three element array for strike", function() {
     var i = 0;
        do {
-          scoreBoard.firstRoll(10);
+          scoreBoard.firstRoll("10");
          i++;
        }
        while (i <= 11);
@@ -74,7 +76,7 @@ describe("ScoreBoard", function() {
   it ("returns a two element array for 10 frames", function() {
     var i = 0;
        do {
-         scoreBoard.firstRoll(1);
+         scoreBoard.firstRoll("1");
          i++;
        }
        while (i <= 17);
@@ -99,7 +101,7 @@ describe("ScoreBoard", function() {
   it ("returns an error that the scoreboard is full after 10 frames have been bowled", function() {
      var i = 0;
         do {
-           scoreBoard.firstRoll(10);
+           scoreBoard.firstRoll("10");
           i++;
         }
         while (i <= 11);

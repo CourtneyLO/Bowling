@@ -3,7 +3,6 @@
 describe("DisplayScore", function() {
   var displayScores;
 
-
   beforeEach(function() {
     displayScores = new DisplayScores();
 

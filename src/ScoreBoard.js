@@ -1,8 +1,8 @@
 'use-strict';
 
-function ScoreBoard(frameCount) {
+function ScoreBoard(frameCount, displayScores) {
   this.frameCount = frameCount;
-  // this.displayScores = displayScores
+  this.displayScores = displayScores
   this.scores = [];
   this.result = 0;
   this.currentFrame = [];
@@ -14,12 +14,12 @@ function ScoreBoard(frameCount) {
 
 ScoreBoard.prototype.firstRoll = function(amount) {
   if (this.scores.length < 10 ) {
+    this.displayScores.score(amount);
     this.currentScore(amount);
   } else {
     throw new Error("Game is over, please start a new game");
   }
 
-  // return this.displayScores.score(amount, this._spare());
 };
 
 ScoreBoard.prototype.currentScore = function(amount) {
