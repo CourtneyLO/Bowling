@@ -1,9 +1,12 @@
 'use-strict'
 
 function Frames() {
-  this.count = 0;
+  this.count = 1;
 };
 
 Frames.prototype.increaseCount = function() {
-  return this.count += 1;
+  if (this.count < 10) {
+    return this.count += 1;
+  }
+
 };
