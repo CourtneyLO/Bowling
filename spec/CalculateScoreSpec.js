@@ -7,6 +7,14 @@ describe('ScoreCalculator', function(){
     scoreCalculator = new ScoreCalculator();
   });
 
+  it ("initializes with a frame count of 10", function() {
+    expect(scoreCalculator.FRAMES).toEqual(10);
+  });
+
+  it ("initializes with a maximum score for one roll of 10", function() {
+    expect(scoreCalculator.MAXPERROLL).toEqual(10);
+  });
+
   it ("returns a score of 67", function() {
     var scores = [2,3,4,2,5,2,5,1,8,1,3,3,2,3,4,3,6,1,7,2];
     scoreCalculator.calculate(scores);

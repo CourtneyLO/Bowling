@@ -1,9 +1,9 @@
 'use-strict';
 
-function DisplayScores() {
+function DisplayScore() {
 };
 
-DisplayScores.prototype.total = function(totalScore) {
+DisplayScore.prototype.total = function(totalScore) {
   var total = document.getElementById("bowlingScores")
   return total.innerHTML = '<p>' + totalScore + '</p>'
 }

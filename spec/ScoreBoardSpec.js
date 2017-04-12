@@ -1,11 +1,13 @@
 describe("ScoreBoard", function() {
   var scoreBoard;
   var scoreCalculator;
+  var displayScore;
 });
 
   beforeEach(function() {
+    displayScore = new DisplayScore();
     scoreCalculator = new ScoreCalculator();
-    scoreBoard = new ScoreBoard(scoreCalculator);
+    scoreBoard = new ScoreBoard(scoreCalculator, displayScore);
   });
 
   it ("initializes with an empty scores array", function() {
@@ -36,22 +38,22 @@ describe("ScoreBoard", function() {
     expect(scoreBoard.splitScores("X|7/|9-|X|-8|8/|-6|X|X|X||81")).toEqual([10,7,3,9,0,10,0,8,8,2,0,6,10,10,10,8,1]);
   });
 
-  it ("returns a score of 300", function() {
+  it ("returns a value of 300 for a perfect score", function() {
     scoreBoard.splitScores("X|X|X|X|X|X|X|X|X|X||XX")
-    expect(scoreBoard.calculateScore(scoreBoard.scores)).toEqual(300)
+    expect(scoreBoard.displayResult()).toEqual('<p>300</p>')
   });
 
   it ("returns a score of 90", function() {
     scoreBoard.splitScores("9-|9-|9-|9-|9-|9-|9-|9-|9-|9-||")
-    expect(scoreBoard.calculateScore(scoreBoard.scores)).toEqual(90)
+    expect(scoreBoard.displayResult()).toEqual('<p>90</p>')
   });
 
   it ("retuns a score of 150", function() {
     scoreBoard.splitScores("5/|5/|5/|5/|5/|5/|5/|5/|5/|5/||5")
-    expect(scoreBoard.calculateScore(scoreBoard.scores)).toEqual(150)
+    expect(scoreBoard.displayResult()).toEqual('<p>150</p>')
   });
 
   it ("retuns a score of 167", function() {
     scoreBoard.splitScores("X|7/|9-|X|-8|8/|-6|X|X|X||81")
-    expect(scoreBoard.calculateScore(scoreBoard.scores)).toEqual(167)
+    expect(scoreBoard.displayResult()).toEqual('<p>167</p>')
   });

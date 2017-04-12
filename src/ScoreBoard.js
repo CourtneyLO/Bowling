@@ -1,7 +1,8 @@
 'use-strict';
 
-function ScoreBoard(scoreCalculator) {
+function ScoreBoard(scoreCalculator, displayScore) {
   this.scoreCalculator = scoreCalculator;
+  this.displayScore = displayScore;
   this.scores = [];
   this.MAXSCOREPERROLL = 10;
   this.MINSCOREPERROLL = 0;
@@ -10,7 +11,7 @@ function ScoreBoard(scoreCalculator) {
 ScoreBoard.prototype.splitScores = function(score) {
   individulaScores = score.split("")
   for (var scoreIndex = 0; scoreIndex < score.length; scoreIndex++) {
-    if (individulaScores[scoreIndex] && individulaScores[scoreIndex] !== '|') {
+    if (individulaScores[scoreIndex] !== '|') {
       this._convertToNumber(scoreIndex);
     }
   };
@@ -29,6 +30,8 @@ ScoreBoard.prototype._convertToNumber = function(scoreIndex) {
   }
 }
 
-ScoreBoard.prototype.calculateScore = function() {
-  return this.scoreCalculator.calculate(this.scores)
+ScoreBoard.prototype.displayResult = function() {
+  var result =  this.scoreCalculator.calculate(this.scores)
+  this.scores = []
+  return this.displayScore.total(result)
 }

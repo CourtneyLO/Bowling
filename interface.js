@@ -1,16 +1,11 @@
 $(document).ready(function(){
-  var frames = new Frames();
-  var displayScores = new DisplayScores();
+  var displayScore = new DisplayScore();
   var scoreCalculator = new ScoreCalculator();
-  var scoreBoard = new ScoreBoard(frames, displayScores, scoreCalculator);
+  var scoreBoard = new ScoreBoard(scoreCalculator, displayScore);
 
   $('#getValue').click(function() {
-      scoreBoard.rollScore($("#score").val());
+      scoreBoard.splitScores($("#score").val());
+      scoreBoard.displayResult()
   });
-
-  $('#getTotalScore').click(function() {
-    scoreBoard.getTotalScore()
-  });
-
 
 });
