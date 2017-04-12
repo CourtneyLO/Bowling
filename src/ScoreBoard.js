@@ -9,11 +9,18 @@ function ScoreBoard(frameCount, displayScores, scoreCalculator) {
   this.BONUSBALL = 1;
 }
 
+ScoreBoard.prototype.rollScore = function(score) {
+  if (this._convertToNumber(score) <= 10) {
+    return this.firstRoll(score);
+  } else {
+    throw new Error("Score is invalid, please try again")
+  }
+};
 
-ScoreBoard.prototype.firstRoll = function(scores) {
+ScoreBoard.prototype.firstRoll = function(score) {
   if (this.scores.length < this._isThrowAllowed()) {
-    this.displayScores.score(scores);
-    this._currentScore(scores);
+    this.displayScores.score(score);
+    this._currentScore(score);
   } else {
     throw new Error("Game is over, please start a new game");
   }
