@@ -48,9 +48,15 @@ describe('ScoreCalculator', function(){
   });
 
   it("returns 262 with a three strikes in the tenth frame", function() {
-    var scores = [[10,10,10,10,10,10,10,7,3,5,5,10,10,10];
+    var scores = [10,10,10,10,10,10,10,7,3,5,5,10,10,10];
     scoreCalculator.calculate(scores)
     expect(scoreCalculator.result).toEqual(262);
+  });
+
+  it("returns 248 with 9th frame being a strike and the bonus roll included", function() {
+    var scores = [10,10,10,10,10,10,10,7,3,10,7,3,1];
+    scoreCalculator.calculate(scores)
+    expect(scoreCalculator.result).toEqual(248);
   });
 
 
