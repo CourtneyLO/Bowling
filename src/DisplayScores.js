@@ -17,10 +17,9 @@ DisplayScores.prototype.displayScore = function(score) {
 };
 
 DisplayScores.prototype.total = function(totalScore) {
-  console.log(totalScore)
-  var total = document.getElementById("bowlingTotal")
-  return total.innerHTML = '<td>' + totalScore + '</td>'
-}
+    var total = document.getElementById("bowlingTotal")
+    return total.innerHTML = '<td>' + totalScore + '</td>'
+};
 
 DisplayScores.prototype._addScoreToCurrentFrame = function(score) {
   this._resetCurrentFrame()

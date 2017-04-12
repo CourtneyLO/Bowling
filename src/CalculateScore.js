@@ -13,11 +13,19 @@ ScoreCalculator.prototype.calculate = function(scores) {
         index ++;
     } else if (scores[index] + scores[index+ 1] === 10) {
         result += scores[index] + scores[index + 1] + scores[index + 2];
+        this.results.push(result)
         index += 2;
     } else {
         result += scores[index] + scores[index + 1];
+        this.results.push(result)
         index += 2;
     }
+    // console.log(this.results)
+    // var total = document.getElementById("bowlingTotal")
+    // return total.innerHTML = '<td id=' + index + '>' + result + '</td>'
   };
+  // console.log(this.results)
+  // console.log(this.results[this.results.length -1])
   return result;
+  // return this.results;
 };

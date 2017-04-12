@@ -37,7 +37,7 @@ describe('ScoreCalculator', function(){
     expect(scoreCalculator.calculate(scores)).toEqual(0);
   });
 
-  it("returns a total score with a spare in the bonus roll", function() {
+  it("returns a total score of 240 with a spare in the 10th frame", function() {
     var scores = [10,10,10,10,10,10,10,7,3,5,5,7,3,1];
     scoreCalculator.calculate(scores)
     expect(scoreCalculator.calculate(scores)).toEqual(240);

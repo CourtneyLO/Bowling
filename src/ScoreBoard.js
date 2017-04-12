@@ -36,7 +36,7 @@ ScoreBoard.prototype._isThrowAllowed = function() {
 
 ScoreBoard.prototype.getTotalScore = function() {
   var result = this.scoreCalculator.calculate(this.scores);
-  return this.displayScores.total(result);
+  return this.displayScores.total(result)
 };
 
 ScoreBoard.prototype.startNewGame = function() {

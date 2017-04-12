@@ -12,7 +12,7 @@ describe("ScoreBoard", function() {
     // spyOn(displayScores, "score" );
     scoreCalculator = new ScoreCalculator();
   });
-
+  //
   it ("initializes with an empty score array", function() {
     expect(scoreBoard.scores).toEqual([]);
   });
@@ -59,34 +59,19 @@ describe("ScoreBoard", function() {
   });
 
   it ("returns a two element array for 9 frames and a three element array for strike", function() {
-    var i = 0;
-       do {
-          scoreBoard.rollScore("10");
-         i++;
-       }
-       while (i <= 11);
+    mulitpleRolls("10", 12)
     expect(scoreBoard.scores).toEqual([10,10,10,10,10,10,10,10,10,10,10,10])
   });
 
   it ("returns a two element array for 10 frames - no bonus ball allowed", function() {
-    var i = 0;
-       do {
-         scoreBoard.rollScore("1");
-         i++;
-       }
-       while (i <= 17);
+    mulitpleRolls("1", 18)
     scoreBoard.rollScore("1");
     scoreBoard.rollScore("1");
     expect(scoreBoard.scores).toEqual([1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]);
   });
 
   it ("returns a two element array for 9 frames and a three element array for spare", function() {
-    var i = 0;
-       do {
-         scoreBoard.rollScore("1");
-         i++;
-       }
-       while (i <= 17);
+    mulitpleRolls("1", 18)
     scoreBoard.rollScore("7");
     scoreBoard.rollScore("3");
     scoreBoard.rollScore("1");
@@ -94,12 +79,7 @@ describe("ScoreBoard", function() {
   });
 
   it ("returns a two element array for 9 frames and a three element array for strike", function() {
-    var i = 0;
-       do {
-         scoreBoard.rollScore("1");
-         i++;
-       }
-       while (i <= 17);
+    mulitpleRolls("1", 18)
     scoreBoard.rollScore("10");
     scoreBoard.rollScore("3");
     scoreBoard.rollScore("1");
@@ -107,22 +87,12 @@ describe("ScoreBoard", function() {
   });
 
   it ("returns an error that the scoreboard is full after 10 frames have been bowled", function() {
-    var i = 0;
-       do {
-         scoreBoard.rollScore("1");
-         i++;
-       }
-       while (i <= 19);
+    mulitpleRolls("1", 20)
     expect( function(){ scoreBoard.rollScore("7") } ).toThrow(new Error("Game is over, please start a new game"))
   });
 
   it ("throws an error when game is over - no more throws allowed", function() {
-    var i = 0;
-       do {
-         scoreBoard.rollScore("1");
-         i++;
-       }
-       while (i <= 17);
+    mulitpleRolls("1", 18)
     scoreBoard.rollScore("7");
     scoreBoard.rollScore("3");
     scoreBoard.rollScore("1");
@@ -136,16 +106,16 @@ describe("ScoreBoard", function() {
   });
 
   it ("calls score calculator and returns the total score of 29", function() {
-    var i = 0;
-       do {
-         scoreBoard.rollScore("1");
-         i++;
-       }
-       while (i <= 17);
+    mulitpleRolls("1", 18)
     scoreBoard.rollScore("7");
     scoreBoard.rollScore("3");
     scoreBoard.rollScore("1")
     expect(scoreBoard.getTotalScore()).toMatch('<td>29</td>')
   });
+
+  var mulitpleRolls = function (score, numberOfRolls) {
+  for(var i = 0; i < numberOfRolls; i++)
+      scoreBoard.rollScore(score);
+  }
 
 });
