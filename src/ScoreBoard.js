@@ -10,6 +10,8 @@ ScoreBoard.prototype.splitScores = function(score) {
   if (individulaScores[i] && individulaScores[i] !== '|') {
     if (individulaScores[i] === 'X') {
       this.scores.push(10);
+    } else if (individulaScores[i] === '-') {
+        this.scores.push(0)
     } else {
       this.scores.push(individulaScores[i])
     }
