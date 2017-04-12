@@ -10,12 +10,12 @@ function ScoreBoard(scoreCalculator) {
 ScoreBoard.prototype.splitScores = function(score) {
   individulaScores = score.split("")
   for (var scoreIndex = 0; scoreIndex < score.length; scoreIndex++) {
-  if (individulaScores[scoreIndex] && individulaScores[scoreIndex] !== '|') {
-    this._convertToNumber(scoreIndex);
-  }
-}
-return this.scores
-}
+    if (individulaScores[scoreIndex] && individulaScores[scoreIndex] !== '|') {
+      this._convertToNumber(scoreIndex);
+    }
+  };
+    return this.scores
+};
 
 ScoreBoard.prototype._convertToNumber = function(scoreIndex) {
   if (individulaScores[scoreIndex] === 'X') {
