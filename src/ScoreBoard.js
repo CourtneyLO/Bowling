@@ -5,12 +5,21 @@ function ScoreBoard(frameCount, displayScores) {
   this.displayScores = displayScores
   this.scores = [];
   this.MAXROLLS = 20;
+  this.BONUSBALL = 1;
 }
 
-ScoreBoard.prototype.firstRoll = function(amount) {
-  if (this.scores.length < this.MAXROLLS || this.scores[this.scores.length - 1] +  this.scores[this.scores.length - 2] === 10 ) {
-    this.displayScores.score(amount);
-    this.currentScore(amount);
+ScoreBoard.prototype._isThrowAllowed = function() {
+  if (this.scores.length >= 20 && this._bonusBall()) {
+    return this.MAXROLLS += this.BONUSBALL;
+  } else {
+    return this.MAXROLLS
+  }
+};
+
+ScoreBoard.prototype.firstRoll = function(scores) {
+  if (this.scores.length < this._isThrowAllowed()) {
+    this.displayScores.score(scores);
+    this.currentScore(scores);
   } else {
     throw new Error("Game is over, please start a new game");
   }
@@ -32,4 +41,8 @@ ScoreBoard.prototype._convertToNumber = function(amount) {
 
 ScoreBoard.prototype._inputCurrentScore = function(score) {
     return this.scores.push(score)
+};
+
+ScoreBoard.prototype._bonusBall = function() {
+  return this.scores[this.scores.length - 1] +  this.scores[this.scores.length - 2] >= 10
 };

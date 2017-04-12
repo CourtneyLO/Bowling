@@ -18,10 +18,10 @@ describe("ScoreBoard", function() {
   it ('initializes with a max roll number of 20 - without bonus roll', function() {
     expect(scoreBoard.MAXROLLS).toEqual(20);
   });
-  //
-  // it ('initializes with bonus roll of 21 rolls', function() {
-  //   expect(scoreBoard.BONUSROLL).toEqual(21);
-  // });
+
+  it ('initializes with a bonus ball constant of one', function() {
+    expect(scoreBoard.BONUSBALL).toEqual(1);
+  });
 
   it ("convert score into a number", function() {
     expect(scoreBoard._convertToNumber("5")).toEqual(5);
@@ -75,52 +75,58 @@ describe("ScoreBoard", function() {
   });
 
   it ("returns a two element array for 9 frames and a three element array for spare", function() {
-    scoreBoard.firstRoll("1");
-    scoreBoard.firstRoll("1");
-
-    scoreBoard.firstRoll("1");
-    scoreBoard.firstRoll("1");
-
-    scoreBoard.firstRoll("1");
-    scoreBoard.firstRoll("1");
-
-    scoreBoard.firstRoll("1");
-    scoreBoard.firstRoll("1");
-
-    scoreBoard.firstRoll("1");
-    scoreBoard.firstRoll("1");
-
-    scoreBoard.firstRoll("1");
-    scoreBoard.firstRoll("1");
-
-    scoreBoard.firstRoll("1");
-    scoreBoard.firstRoll("1");
-
-    scoreBoard.firstRoll("1");
-    scoreBoard.firstRoll("1");
-
-    scoreBoard.firstRoll("1");
-    scoreBoard.firstRoll("1");
-
+    var i = 0;
+       do {
+         scoreBoard.firstRoll("1");
+         i++;
+       }
+       while (i <= 17);
     scoreBoard.firstRoll("7");
     scoreBoard.firstRoll("3");
     scoreBoard.firstRoll("1");
     expect(scoreBoard.scores).toEqual([1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 7, 3, 1]);
   });
 
+  it ("returns a two element array for 9 frames and a three element array for strike", function() {
+    var i = 0;
+       do {
+         scoreBoard.firstRoll("1");
+         i++;
+       }
+       while (i <= 17);
+    scoreBoard.firstRoll("10");
+    scoreBoard.firstRoll("3");
+    scoreBoard.firstRoll("1");
+    expect(scoreBoard.scores).toEqual([1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 10, 3, 1]);
+  });
+
   it ("returns an error that the scoreboard is full after 10 frames have been bowled", function() {
-     var i = 0;
-        do {
-           scoreBoard.firstRoll("10");
-          i++;
-        }
-        while (i <= 19);
-        expect( function(){ scoreBoard.firstRoll("7") } ).toThrow(new Error("Game is over, please start a new game"))
-      });
+    var i = 0;
+       do {
+         scoreBoard.firstRoll("1");
+         i++;
+       }
+       while (i <= 19);
+    expect( function(){ scoreBoard.firstRoll("7") } ).toThrow(new Error("Game is over, please start a new game"))
+  });
+
+  it ("throws an error when game is over - no more throws allowed", function() {
+    var i = 0;
+       do {
+         scoreBoard.firstRoll("1");
+         i++;
+       }
+       while (i <= 17);
+    scoreBoard.firstRoll("7");
+    scoreBoard.firstRoll("3");
+    scoreBoard.firstRoll("1");
+    expect( function(){ scoreBoard.firstRoll("7") } ).toThrow(new Error("Game is over, please start a new game"))
+  });
 
   it ("gives an option to start a new game", function() {
     scoreBoard.firstRoll("7");
     scoreBoard.firstRoll("3");
     expect(scoreBoard.startNewGame().scores).toEqual([]);
   });
+
 });
