@@ -1,14 +1,16 @@
 describe("ScoreBoard", function() {
   var scoreBoard;
   var frames;
-  var displayScores
+  var displayScores;
+  var scoreCalculator;
 
   beforeEach(function() {
-    scoreBoard = new ScoreBoard(frames, displayScores);
+    scoreBoard = new ScoreBoard(frames, displayScores, scoreCalculator);
     frames = new Frames();
     // spyOn(frames, "increaseCount" );
     displayScores = new DisplayScores();
     // spyOn(displayScores, "score" );
+    scoreCalculator = new ScoreCalculator();
   });
 
   it ("initializes with an empty score array", function() {
@@ -127,6 +129,19 @@ describe("ScoreBoard", function() {
     scoreBoard.firstRoll("7");
     scoreBoard.firstRoll("3");
     expect(scoreBoard.startNewGame().scores).toEqual([]);
+  });
+
+  it ("calls score calculator and returns the total score of 29", function() {
+    var i = 0;
+       do {
+         scoreBoard.firstRoll("1");
+         i++;
+       }
+       while (i <= 17);
+    scoreBoard.firstRoll("7");
+    scoreBoard.firstRoll("3");
+    scoreBoard.firstRoll("1");
+    expect(scoreBoard.getTotalScore()).toEqual(29)
   });
 
 });

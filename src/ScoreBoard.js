@@ -1,8 +1,9 @@
 'use-strict';
 
-function ScoreBoard(frameCount, displayScores) {
+function ScoreBoard(frameCount, displayScores, scoreCalculator) {
   this.frameCount = frameCount;
-  this.displayScores = displayScores
+  this.displayScores = displayScores;
+  this.scoreCalculator = scoreCalculator;
   this.scores = [];
   this.MAXROLLS = 20;
   this.BONUSBALL = 1;
@@ -19,20 +20,24 @@ ScoreBoard.prototype._isThrowAllowed = function() {
 ScoreBoard.prototype.firstRoll = function(scores) {
   if (this.scores.length < this._isThrowAllowed()) {
     this.displayScores.score(scores);
-    this.currentScore(scores);
+    this._currentScore(scores);
   } else {
     throw new Error("Game is over, please start a new game");
   }
-
 };
 
-ScoreBoard.prototype.currentScore = function(amount) {
-  var score = this._convertToNumber(amount);
-  this._inputCurrentScore(score)
+ScoreBoard.prototype.getTotalScore = function() {
+  this.scoreCalculator.calculate(this.scores);
+  return this.scoreCalculator.result;
 };
 
 ScoreBoard.prototype.startNewGame = function() {
   return new ScoreBoard(this.frameCount);
+};
+
+ScoreBoard.prototype._currentScore = function(amount) {
+  var score = this._convertToNumber(amount);
+  this._inputCurrentScore(score)
 };
 
 ScoreBoard.prototype._convertToNumber = function(amount) {
