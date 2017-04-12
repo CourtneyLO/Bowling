@@ -11,13 +11,13 @@ function ScoreBoard(frameCount, displayScores, scoreCalculator) {
 
 ScoreBoard.prototype.rollScore = function(score) {
   if (this._convertToNumber(score) <= 10) {
-    return this.firstRoll(score);
+    return this._useScore(score);
   } else {
     throw new Error("Score is invalid, please try again")
   }
 };
 
-ScoreBoard.prototype.firstRoll = function(score) {
+ScoreBoard.prototype._useScore = function(score) {
   if (this.scores.length < this._isThrowAllowed()) {
     this.displayScores.score(score);
     this._currentScore(score);
@@ -35,8 +35,8 @@ ScoreBoard.prototype._isThrowAllowed = function() {
 };
 
 ScoreBoard.prototype.getTotalScore = function() {
-  this.scoreCalculator.calculate(this.scores);
-  return this.displayScores.total(this.scoreCalculator.result);
+  var result = this.scoreCalculator.calculate(this.scores);
+  return this.displayScores.total(result);
 };
 
 ScoreBoard.prototype.startNewGame = function() {

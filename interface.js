@@ -4,13 +4,13 @@ $(document).ready(function(){
   var scoreCalculator = new ScoreCalculator();
   var scoreBoard = new ScoreBoard(frames, displayScores, scoreCalculator);
 
-$('#getValue').click(function() {
-    scoreBoard.firstRoll($("#score").val());
-    this.results  = scoreBoard.scores
-});
+  $('#getValue').click(function() {
+      scoreBoard.rollScore($("#score").val());
+  });
 
-
-
+  $('#getTotalScore').click(function() {
+    scoreBoard.getTotalScore()
+  });
 
 
 });

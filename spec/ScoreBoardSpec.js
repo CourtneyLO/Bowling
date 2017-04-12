@@ -26,13 +26,13 @@ describe("ScoreBoard", function() {
   });
 
   it ("ensure the inputted value is appropriate", function(){
-    expect(function() {scoreBoard.rollScore("16")}).toThrow(new Error("Score is invalid, please try again"))
+    expect(function() {scoreBoard.rollScore("11")}).toThrow(new Error("Score is invalid, please try again"))
   });
 
   it ("convert score into a number", function() {
     expect(scoreBoard._convertToNumber("5")).toEqual(5);
   })
-
+  //
   it ("adds first score to score array", function() {
     scoreBoard.rollScore("2");
     expect(scoreBoard.scores).toEqual([2]);
@@ -144,7 +144,7 @@ describe("ScoreBoard", function() {
        while (i <= 17);
     scoreBoard.rollScore("7");
     scoreBoard.rollScore("3");
-    scoreBoard.rollScore("1");
+    scoreBoard.rollScore("1")
     expect(scoreBoard.getTotalScore()).toMatch('<td>29</td>')
   });
 
