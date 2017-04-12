@@ -29,4 +29,10 @@ describe('ScoreCalculator', function(){
     expect(scoreCalculator.result).toEqual(81);
   });
 
+  it("returns a score of 300 - perfect score", function() {
+    var scores = [10,10,10,10,10,10,10,10,10,10,10,10];
+    scoreCalculator.calculate(scores)
+    expect(scoreCalculator.result).toEqual(300);
+  });
+
 });
