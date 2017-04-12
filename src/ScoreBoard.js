@@ -1,6 +1,7 @@
 'use-strict';
 
-function ScoreBoard() {
+function ScoreBoard(scoreCalculator) {
+  this.scoreCalculator = scoreCalculator
   this.scores = []
 };
 
@@ -20,4 +21,8 @@ ScoreBoard.prototype.splitScores = function(score) {
   }
 }
 return this.scores
+}
+
+ScoreBoard.prototype.calculateScore = function() {
+  return this.scoreCalculator.calculate(this.scores)
 }
