@@ -1,16 +1,19 @@
 'use-strict';
 
 function ScoreBoard() {
-
+  this.scores = []
 };
 
 ScoreBoard.prototype.splitScores = function(score) {
-  var scores = [];
-  score = score.split("")
+  individulaScores = score.split("")
   for (var i = 0; i < score.length; i++) {
-  if (score[i] && score[i] !== '|') {
-    scores.push(score[i]);
+  if (individulaScores[i] && individulaScores[i] !== '|') {
+    if (individulaScores[i] === 'X') {
+      this.scores.push(10);
+    } else {
+      this.scores.push(individulaScores[i])
+    }
   }
 }
-return scores
+return this.scores
 }
