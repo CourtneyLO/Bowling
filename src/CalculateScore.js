@@ -1,11 +1,11 @@
 'use-strict'
 
-function TotalScore() {
+function ScoreCalculator() {
   this.result = [];
   this.scores = [];
 };
 
-TotalScore.prototype.calculateScore = function(scores) {
+ScoreCalculator.prototype.calculate = function(scores) {
   for(var num = 0; num < scores.length; num ++) {
     for(var i = 0; i < scores[num].length; i ++) {
       if (scores[num][i] === 10 && scores[num].length < 3) {
