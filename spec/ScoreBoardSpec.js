@@ -17,3 +17,7 @@ describe("ScoreBoard", function() {
   it ("splints string with spares", function() {
     expect(scoreBoard.splitScores("5/|5/|5/|5/|5/|5/|5/|5/|5/|5/||5")).toEqual(["5","/","5","/","5","/","5","/","5","/","5","/","5","/","5","/","5","/","5","/","5"])
   });
+
+  it ("splints string with a mixture of scores", function() {
+    expect(scoreBoard.splitScores("X|7/|9-|X|-8|8/|-6|X|X|X||81")).toEqual(['X','7','/','9','-','X','-','8','8','/','-','6','X','X','X','8','1'])
+  });
