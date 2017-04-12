@@ -23,4 +23,10 @@ describe('ScoreCalculator', function(){
     expect(scoreCalculator.result).toEqual(70)
   });
 
+  it("returns a score of 81 with a spare and a strike", function() {
+    var scores = [2,3,5,1,5,5,2,2,8,1,3,4,10,3,3,6,1,7,2];
+    scoreCalculator.calculate(scores);
+    expect(scoreCalculator.result).toEqual(81);
+  });
+
 });
