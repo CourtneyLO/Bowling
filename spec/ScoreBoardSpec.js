@@ -12,6 +12,14 @@ describe("ScoreBoard", function() {
     expect(scoreBoard.scores).toEqual([]);
   });
 
+  it ("initializes with a maximum score per role constant of 10", function() {
+    expect(scoreBoard.MAXSCOREPERROLL).toEqual(10);
+  });
+
+  it ("initializes with a minimum score per role constant of 0", function() {
+    expect(scoreBoard.MINSCOREPERROLL).toEqual(0);
+  });
+
   it ("splits string of strikes into array", function() {
     expect(scoreBoard.splitScores("X|X|X|X|X|X|X|X|X|X||XX")).toEqual([10,10,10,10,10,10,10,10,10,10,10,10]);
   });
@@ -41,4 +49,9 @@ describe("ScoreBoard", function() {
   it ("retuns a score of 150", function() {
     scoreBoard.splitScores("5/|5/|5/|5/|5/|5/|5/|5/|5/|5/||5")
     expect(scoreBoard.calculateScore(scoreBoard.scores)).toEqual(150)
+  });
+
+  it ("retuns a score of 167", function() {
+    scoreBoard.splitScores("X|7/|9-|X|-8|8/|-6|X|X|X||81")
+    expect(scoreBoard.calculateScore(scoreBoard.scores)).toEqual(167)
   });
