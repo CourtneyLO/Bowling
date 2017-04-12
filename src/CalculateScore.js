@@ -5,8 +5,14 @@ function ScoreCalculator() {
 };
 
 ScoreCalculator.prototype.calculate = function(scores) {
-  for (indexEachScore = 0; indexEachScore < scores.length; indexEachScore ++) {
-    this.result += scores[indexEachScore];
-  }
-
+var index = 0;
+  for ( var eachFrame = 0; eachFrame < 10; eachFrame ++) {
+    if (scores[index] + scores[index+ 1] === 10) {
+        this.result += scores[index] + scores[index + 1] + scores[index + 2];
+        index += 2;
+    } else {
+        this.result += scores[index] + scores[index + 1];
+        index += 2;
+    }
+  };
 };
