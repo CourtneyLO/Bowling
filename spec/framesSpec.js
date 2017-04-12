@@ -15,5 +15,4 @@ describe("Frames", function() {
     expect(frames.increaseCount()).toEqual(2);
   });
 
-
 });

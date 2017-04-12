@@ -8,5 +8,4 @@ Frames.prototype.increaseCount = function() {
   if (this.count < 10) {
     return this.count += 1;
   }
-
 };
