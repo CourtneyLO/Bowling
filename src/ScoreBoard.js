@@ -15,7 +15,7 @@ ScoreBoard.prototype.splitScores = function(score) {
     } else if (individulaScores[i] === '/'){
        this.scores.push(10 - individulaScores[i - 1])
     } else {
-       this.scores.push(individulaScores[i])
+       this.scores.push(Number(individulaScores[i]))
     }
   }
 }
