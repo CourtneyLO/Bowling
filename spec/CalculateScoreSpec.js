@@ -35,4 +35,23 @@ describe('ScoreCalculator', function(){
     expect(scoreCalculator.result).toEqual(300);
   });
 
+  it("returns a score of 0 - gutter game", function() {
+    var scores = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+    scoreCalculator.calculate(scores)
+    expect(scoreCalculator.result).toEqual(0);
+  });
+
+  it("returns a total score with a spare in the bonus roll", function() {
+    var scores = [10,10,10,10,10,10,10,7,3,5,5,7,3,1];
+    scoreCalculator.calculate(scores)
+    expect(scoreCalculator.result).toEqual(240);
+  });
+
+  it("returns 262 with a three strikes in the tenth frame", function() {
+    var scores = [[10,10,10,10,10,10,10,7,3,5,5,10,10,10];
+    scoreCalculator.calculate(scores)
+    expect(scoreCalculator.result).toEqual(262);
+  });
+
+
 });

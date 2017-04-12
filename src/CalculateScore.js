@@ -5,7 +5,7 @@ function ScoreCalculator() {
 };
 
 ScoreCalculator.prototype.calculate = function(scores) {
-var index = 0;
+  var index = 0;
   for ( var eachFrame = 0; eachFrame < 10; eachFrame ++) {
     if (scores[index] === 10) {
         this.result += scores[index] + scores[index + 1] + scores[index + 2];
