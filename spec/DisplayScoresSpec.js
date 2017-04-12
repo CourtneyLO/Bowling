@@ -52,4 +52,9 @@ describe("DisplayScore", function() {
     displayScores.score("1");
     expect(displayScores.score("5")).toMatch('<td>2</td><td>/</td><td>-</td><td>6</td><td>X</td><td>8</td><td>/</td><td>7</td><td>/</td><td>6</td><td>1</td><td>X</td><td>6</td><td>1</td><td>5</td><td>/</td><td>1</td><td>5</td>');
   });
+
+  it("displays a final result of 29", function() {
+    var totalScore = 29;
+    expect(displayScores.total(totalScore)).toMatch('<td>29</td>')
+  });
 });

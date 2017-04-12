@@ -28,7 +28,7 @@ ScoreBoard.prototype.firstRoll = function(scores) {
 
 ScoreBoard.prototype.getTotalScore = function() {
   this.scoreCalculator.calculate(this.scores);
-  return this.scoreCalculator.result;
+  return this.displayScores.total(this.scoreCalculator.result);
 };
 
 ScoreBoard.prototype.startNewGame = function() {

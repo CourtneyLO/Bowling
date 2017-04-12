@@ -141,7 +141,7 @@ describe("ScoreBoard", function() {
     scoreBoard.firstRoll("7");
     scoreBoard.firstRoll("3");
     scoreBoard.firstRoll("1");
-    expect(scoreBoard.getTotalScore()).toEqual(29)
+    expect(scoreBoard.getTotalScore()).toMatch('<td>29</td>')
   });
 
 });

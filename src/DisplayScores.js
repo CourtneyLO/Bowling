@@ -16,6 +16,11 @@ DisplayScores.prototype.displayScore = function(score) {
   }
 };
 
+DisplayScores.prototype.total = function(totalScore) {
+  var total = document.getElementById("bowlingTotal")
+  return total.innerHTML = '<td>' + totalScore + '</td>'
+}
+
 DisplayScores.prototype._addScoreToCurrentFrame = function(score) {
   this._resetCurrentFrame()
   this.currentFrame.push(Number(score))
@@ -41,4 +46,4 @@ DisplayScores.prototype._resetCurrentFrame = function() {
 DisplayScores.prototype._setDisplay = function(element) {
   var score = document.getElementById("bowlingScores")
   return score.innerHTML += "<td>" + element + "</td>";
-}
+};
