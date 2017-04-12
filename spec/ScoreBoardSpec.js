@@ -33,4 +33,12 @@ describe("ScoreBoard", function() {
     expect(scoreBoard.calculateScore(scoreBoard.scores)).toEqual(300)
   });
 
-  
+  it ("returns a score of 90", function() {
+    scoreBoard.splitScores("9-|9-|9-|9-|9-|9-|9-|9-|9-|9-||")
+    expect(scoreBoard.calculateScore(scoreBoard.scores)).toEqual(90)
+  });
+
+  it ("retuns a score of 150", function() {
+    scoreBoard.splitScores("5/|5/|5/|5/|5/|5/|5/|5/|5/|5/||5")
+    expect(scoreBoard.calculateScore(scoreBoard.scores)).toEqual(150)
+  });
