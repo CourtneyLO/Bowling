@@ -9,13 +9,6 @@ function ScoreBoard(frameCount, displayScores, scoreCalculator) {
   this.BONUSBALL = 1;
 }
 
-ScoreBoard.prototype._isThrowAllowed = function() {
-  if (this.scores.length >= 20 && this._bonusBall()) {
-    return this.MAXROLLS += this.BONUSBALL;
-  } else {
-    return this.MAXROLLS
-  }
-};
 
 ScoreBoard.prototype.firstRoll = function(scores) {
   if (this.scores.length < this._isThrowAllowed()) {
@@ -23,6 +16,14 @@ ScoreBoard.prototype.firstRoll = function(scores) {
     this._currentScore(scores);
   } else {
     throw new Error("Game is over, please start a new game");
+  }
+};
+
+ScoreBoard.prototype._isThrowAllowed = function() {
+  if (this.scores.length >= 20 && this._bonusBall()) {
+    return this.MAXROLLS += this.BONUSBALL;
+  } else {
+    return this.MAXROLLS
   }
 };
 
