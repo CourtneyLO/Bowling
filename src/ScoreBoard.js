@@ -9,11 +9,13 @@ ScoreBoard.prototype.splitScores = function(score) {
   for (var i = 0; i < score.length; i++) {
   if (individulaScores[i] && individulaScores[i] !== '|') {
     if (individulaScores[i] === 'X') {
-      this.scores.push(10);
+       this.scores.push(10);
     } else if (individulaScores[i] === '-') {
         this.scores.push(0)
+    } else if (individulaScores[i] === '/'){
+       this.scores.push(10 - individulaScores[i - 1])
     } else {
-      this.scores.push(individulaScores[i])
+       this.scores.push(individulaScores[i])
     }
   }
 }

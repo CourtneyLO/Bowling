@@ -19,9 +19,9 @@ describe("ScoreBoard", function() {
   });
 
   it ("splints string with spares", function() {
-    expect(scoreBoard.splitScores("5/|5/|5/|5/|5/|5/|5/|5/|5/|5/||5")).toEqual(["5","/","5","/","5","/","5","/","5","/","5","/","5","/","5","/","5","/","5","/","5"]);
+    expect(scoreBoard.splitScores("5/|5/|5/|5/|5/|5/|5/|5/|5/|5/||5")).toEqual(["5",5,"5",5,"5",5,"5",5,"5",5,"5",5,"5",5,"5",5,"5",5,"5",5,"5"]);
   });
 
   it ("splints string with a mixture of scores", function() {
-    expect(scoreBoard.splitScores("X|7/|9-|X|-8|8/|-6|X|X|X||81")).toEqual([10,'7','/','9',0,10,0,'8','8','/',0,'6',10,10,10,'8','1']);
+    expect(scoreBoard.splitScores("X|7/|9-|X|-8|8/|-6|X|X|X||81")).toEqual([10,'7',3,'9',0,10,0,'8','8',2,0,'6',10,10,10,'8','1']);
   });
