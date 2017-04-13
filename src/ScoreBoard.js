@@ -30,8 +30,12 @@ ScoreBoard.prototype._convertToNumber = function(scoreIndex) {
   }
 }
 
-ScoreBoard.prototype.displayResult = function() {
+ScoreBoard.prototype.displayTotal = function() {
   var result =  this.scoreCalculator.calculate(this.scores)
-  this.scores = []
+  this._refreshScores();
   return this.displayScore.total(result)
 }
+
+ScoreBoard.prototype._refreshScores = function() {
+  this.scores = []
+};
