@@ -8,8 +8,16 @@ function ScoreBoard(scoreCalculator, displayScore) {
   this.MINSCOREPERROLL = 0;
 };
 
-ScoreBoard.prototype.splitScores = function(score) {
+ScoreBoard.prototype.takeScores = function(score) {
+  if (this._isValid(score)) {
+    return this._splitScores(score);
+  } else
+  throw new Error("This score is invalid - please try again")
+};
+
+ScoreBoard.prototype._splitScores = function(score) {
   individualScores = score.split("");
+  this._isValid(individualScores);
   for (var scoreIndex = 0; scoreIndex < score.length; scoreIndex++) {
     if (individualScores[scoreIndex] !== '|') {
       this._convertToNumber(scoreIndex);
@@ -39,3 +47,16 @@ ScoreBoard.prototype.displayTotal = function() {
 ScoreBoard.prototype._refreshScores = function() {
   this.scores = [];
 };
+
+ScoreBoard.prototype._isValid = function(score) {
+  return this._count(score) === 11
+}
+
+ScoreBoard.prototype._count = function(score) {
+  var count = 0;
+  for(var i = 0; i < score.length; ++i){
+    if(score[i] == '|')
+        count++;
+}
+ return count
+}
