@@ -19,7 +19,11 @@ describe("ScoreBoard", function() {
                                                '/': 10,
                                                '-': 0})
     });
-
   });
 
+    describe("splits string of:" , function() {
+      it ("strikes into array", function() {
+        expect(scoreBoard.splitScores("X|X|X|X|X|X|X|X|X|X||XX")).toEqual([10,10,10,10,10,10,10,10,10,10,10,10]);
+      });
+    });
 });
