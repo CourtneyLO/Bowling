@@ -19,7 +19,6 @@ ScoreBoard.prototype.firstRoll = function(amount) {
   } else {
     throw new Error("Game is over, please start a new game");
   }
-
 };
 
 ScoreBoard.prototype.currentScore = function(amount) {
@@ -73,15 +72,3 @@ ScoreBoard.prototype._spare = function() {
 ScoreBoard.prototype._strike = function() {
   return this.currentFrame[0] === this.MAXSCORE;
 };
-
-// ScoreBoard.prototype._displayScore = function(amount) {
-//   if (amount === '10') {
-//     return "X";
-//   } else if (this._spare()) {
-//     return '/'
-//   } else if (amount === '0') {
-//     return "-"
-//   } else {
-//     return amount;
-//   }
-// };
