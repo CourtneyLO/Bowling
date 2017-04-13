@@ -8,14 +8,15 @@ describe("DisplayScore", function() {
   });
 
   describe("displays a total score of:", function() {
+    it ("0 for a gutter game", function() {
+      var totalScore = 0
+      expect(displayScore.total(totalScore)).toEqual('<p>0</p>')
+    });
+    
     it ("300 for a perfect score", function() {
       var totalScore = 300
       expect(displayScore.total(totalScore)).toEqual('<p>300</p>')
     });
 
-    it ("0 for a gutter game", function() {
-      var totalScore = 0
-      expect(displayScore.total(totalScore)).toEqual('<p>0</p>')
-    });
   });
 });

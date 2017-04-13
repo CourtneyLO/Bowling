@@ -9,9 +9,9 @@ function ScoreBoard(scoreCalculator, displayScore) {
 };
 
 ScoreBoard.prototype.splitScores = function(score) {
-  individulaScores = score.split("")
+  individualScores = score.split("")
   for (var scoreIndex = 0; scoreIndex < score.length; scoreIndex++) {
-    if (individulaScores[scoreIndex] !== '|') {
+    if (individualScores[scoreIndex] !== '|') {
       this._convertToNumber(scoreIndex);
     }
   };
@@ -19,14 +19,14 @@ ScoreBoard.prototype.splitScores = function(score) {
 };
 
 ScoreBoard.prototype._convertToNumber = function(scoreIndex) {
-  if (individulaScores[scoreIndex] === 'X') {
+  if (individualScores[scoreIndex] === 'X') {
      this.scores.push(this.MAXSCOREPERROLL);
-  } else if (individulaScores[scoreIndex] === '-') {
+  } else if (individualScores[scoreIndex] === '-') {
       this.scores.push(this.MINSCOREPERROLL)
-  } else if (individulaScores[scoreIndex] === '/'){
-     this.scores.push(this.MAXSCOREPERROLL - individulaScores[scoreIndex - 1])
+  } else if (individualScores[scoreIndex] === '/'){
+     this.scores.push(this.MAXSCOREPERROLL - individualScores[scoreIndex - 1])
   } else {
-     this.scores.push(Number(individulaScores[scoreIndex]))
+     this.scores.push(Number(individualScores[scoreIndex]))
   }
 }
 
