@@ -16,7 +16,8 @@ describe("ScoreBoard", function() {
 
     it("a constant of possible score results", function() {
       expect(scoreBoard.SCORESYMBOLS).toEqual({'X': 10,
-                                               '-': 0})
+                                               '-': 0,
+                                               '/': 10})
     });
   });
 
