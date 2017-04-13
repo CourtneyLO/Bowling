@@ -5,7 +5,7 @@ $(document).ready(function(){
 
   $('#getValue').click(function() {
       scoreBoard.splitScores($("#score").val());
-      scoreBoard.displayResult()
+      scoreBoard.displayTotal()
   });
 
 });
