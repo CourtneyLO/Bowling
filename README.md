@@ -1,6 +1,8 @@
 # Score Calculator
 Author: Courtney Osborn
 
+![Alt text](image/bowling.png?raw=true)
+
 ## Application
 
 This is a ten pin bowling score application. One can submit their full game score to get their total result.
