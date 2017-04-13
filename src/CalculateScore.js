@@ -11,7 +11,6 @@ ScoreCalculator.prototype.calculate = function(scores) {
       if (scores[num][i] === 10 && scores[num].length < 3) {
         scores[num] = scores[num][i] + scores[num + 1].reduce((a, b) => a + b, 0)
         if (scores[num + 1][i] === 10) {
-          console.log(scores[num + 2])
           scores[num] = scores[num] + scores[num + 2][i]
         }
       } else if (scores[num][i] + scores[num][i + 1]  === 10) {
