@@ -45,23 +45,23 @@ describe("ScoreBoard", function() {
 
   describe("returns score of:" , function() {
     it ("300 for a perfect score", function() {
-      scoreBoard.splitScores("X|X|X|X|X|X|X|X|X|X||XX")
-      expect(scoreBoard.displayTotal()).toEqual('<p>300</p>')
+      scoreBoard.splitScores("X|X|X|X|X|X|X|X|X|X||XX");
+      expect(scoreBoard.displayTotal()).toEqual('<p>300</p>');
     });
 
     it ("90 containing 0s and 9s", function() {
-      scoreBoard.splitScores("9-|9-|9-|9-|9-|9-|9-|9-|9-|9-||")
-      expect(scoreBoard.displayTotal()).toEqual('<p>90</p>')
+      scoreBoard.splitScores("9-|9-|9-|9-|9-|9-|9-|9-|9-|9-||");
+      expect(scoreBoard.displayTotal()).toEqual('<p>90</p>');
     });
 
     it ("150 containing spares", function() {
-      scoreBoard.splitScores("5/|5/|5/|5/|5/|5/|5/|5/|5/|5/||5")
-      expect(scoreBoard.displayTotal()).toEqual('<p>150</p>')
+      scoreBoard.splitScores("5/|5/|5/|5/|5/|5/|5/|5/|5/|5/||5");
+      expect(scoreBoard.displayTotal()).toEqual('<p>150</p>');
     });
 
     it ("167 containing a mixture of scores", function() {
-      scoreBoard.splitScores("X|7/|9-|X|-8|8/|-6|X|X|X||81")
-      expect(scoreBoard.displayTotal()).toEqual('<p>167</p>')
+      scoreBoard.splitScores("X|7/|9-|X|-8|8/|-6|X|X|X||81");
+      expect(scoreBoard.displayTotal()).toEqual('<p>167</p>');
     });
   });
 });

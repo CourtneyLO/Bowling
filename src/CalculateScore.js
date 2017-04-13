@@ -17,7 +17,7 @@ ScoreCalculator.prototype.calculate = function(scores) {
         result += this._spare(scores, index);
         index += 2;
     } else {
-        result += this._neither(scores, index)
+        result += this._neither(scores, index);
         index += 2;
     }
   };

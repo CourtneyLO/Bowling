@@ -9,33 +9,33 @@ function ScoreBoard(scoreCalculator, displayScore) {
 };
 
 ScoreBoard.prototype.splitScores = function(score) {
-  individualScores = score.split("")
+  individualScores = score.split("");
   for (var scoreIndex = 0; scoreIndex < score.length; scoreIndex++) {
     if (individualScores[scoreIndex] !== '|') {
       this._convertToNumber(scoreIndex);
     }
   };
-    return this.scores
+    return this.scores;
 };
 
 ScoreBoard.prototype._convertToNumber = function(scoreIndex) {
   if (individualScores[scoreIndex] === 'X') {
      this.scores.push(this.MAXSCOREPERROLL);
   } else if (individualScores[scoreIndex] === '-') {
-      this.scores.push(this.MINSCOREPERROLL)
+      this.scores.push(this.MINSCOREPERROLL);
   } else if (individualScores[scoreIndex] === '/'){
-     this.scores.push(this.MAXSCOREPERROLL - individualScores[scoreIndex - 1])
+     this.scores.push(this.MAXSCOREPERROLL - individualScores[scoreIndex - 1]);
   } else {
-     this.scores.push(Number(individualScores[scoreIndex]))
+     this.scores.push(Number(individualScores[scoreIndex]));
   }
-}
+};
 
 ScoreBoard.prototype.displayTotal = function() {
-  var result =  this.scoreCalculator.calculate(this.scores)
+  var result =  this.scoreCalculator.calculate(this.scores);
   this._refreshScores();
-  return this.displayScore.total(result)
-}
+  return this.displayScore.total(result);
+};
 
 ScoreBoard.prototype._refreshScores = function() {
-  this.scores = []
+  this.scores = [];
 };
