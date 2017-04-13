@@ -36,10 +36,10 @@ $ open SpecRunner.html
   - Takes full result string and returns scores
   - Similar to master but takes an alternative approach to    retrieving bowling scores using a key-value pair.
 
-##### FullScoreCalculator-version2
+##### individualScoreCalculator-version1
   - Takes individualScores and calculates result once game is over
 
-#####FullScoreCalculator-version1
+##### individualScoreCalculator-version2
   - Takes individualScores and calculates result once game is over
   - Similar to FullScoreCalculator-version2 but an alternative solution.
   - First Version created
