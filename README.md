@@ -10,7 +10,7 @@ This is a ten pin bowling score application. One can submit their full game scor
 ## Use Application
 
 ```
-$ git clone  
+$ git clone git@github.com:CourtneyLO/Bowling.git
 $ open index.html
 
 - input score
