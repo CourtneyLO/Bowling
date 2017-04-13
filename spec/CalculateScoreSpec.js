@@ -57,29 +57,11 @@ describe('ScoreCalculator', function(){
     expect(scoreCalculator.result).toEqual(262);
   });
 
-  it("returns a total score with the bonus roll included", function() {
-    var scores = [[10,0],[10,0],[10,0],[10,0],[10,0],[10,0],[10,0],[7,3],[10,0],[7,3,1]];
-    scoreCalculator.calculate(scores)
-    expect(scoreCalculator.result).toEqual(248);
-  });
-
-  it("returns a total score with a spare in the bonus roll", function() {
-    var scores = [[10,0],[10,0],[10,0],[10,0],[10,0],[10,0],[10,0],[7,3],[5,5],[7,3,1]];
-    scoreCalculator.calculate(scores)
-    expect(scoreCalculator.result).toEqual(240);
-  });
 
   it("returns a total score with a strike in the bonus roll", function() {
     var scores = [[10,0],[10,0],[10,0],[10,0],[10,0],[10,0],[10,0],[7,3],[5,5],[10,10,10]];
     scoreCalculator.calculate(scores)
     expect(scoreCalculator.result).toEqual(262);
   });
-
-  it("returns a total score with the bonus roll included", function() {
-    var scores = [[10,0],[10,0],[10,0],[10,0],[10,0],[10,0],[10,0],[10,0],[10,0],[10,10,10]];
-    scoreCalculator.calculate(scores)
-    expect(scoreCalculator.result).toEqual(300);
-  });
-
 
 });
