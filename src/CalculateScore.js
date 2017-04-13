@@ -20,12 +20,6 @@ ScoreCalculator.prototype.calculate = function(scores) {
         this.results.push(result)
         index += 2;
     }
-    // console.log(this.results)
-    // var total = document.getElementById("bowlingTotal")
-    // return total.innerHTML = '<td id=' + index + '>' + result + '</td>'
   };
-  // console.log(this.results)
-  // console.log(this.results[this.results.length -1])
   return result;
-  // return this.results;
 };
