@@ -1,7 +1,8 @@
 # Score Calculator
 Author: Courtney Osborn
 
-![Alt text](image/bowling.png?raw=true)
+![Alt text](public/images/bowling.png?raw=true)
+
 
 ## Application
 
