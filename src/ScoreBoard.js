@@ -1,6 +1,8 @@
 'use-strict';
 
-function ScoreBoard() {
+function ScoreBoard(scoreCalculator, displayScore) {
+  this.scoreCalculator = scoreCalculator;
+  this.displayScore = displayScore
   this.scores = [];
   this.SCORESYMBOLS = {'X': 10,
                        '-': 0,
@@ -45,3 +47,13 @@ ScoreBoard.prototype._isStrike = function(individualScores, scoreIndex) {
 ScoreBoard.prototype._isZero = function(individualScores, scoreIndex) {
   return individualScores[scoreIndex] === '-';
 }
+
+ScoreBoard.prototype.displayTotal = function() {
+  var result =  this.scoreCalculator.calculate(this.scores)
+  this._refreshScores();
+  return this.displayScore.total(result)
+}
+
+ScoreBoard.prototype._refreshScores = function() {
+  this.scores = []
+};
