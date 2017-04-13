@@ -4,7 +4,7 @@ $(document).ready(function(){
   var scoreBoard = new ScoreBoard(scoreCalculator, displayScore);
 
   $('#getValue').click(function() {
-      scoreBoard.splitScores($("#score").val());
+      scoreBoard.takeScores($("#score").val());
       scoreBoard.displayTotal();
   });
 

@@ -22,6 +22,10 @@ describe("ScoreBoard", function() {
     it ("a minimum score per role constant of 0", function() {
       expect(scoreBoard.MINSCOREPERROLL).toEqual(0);
     });
+
+    it ("a no error message", function() {
+      expect(scoreBoard.error).toEqual("no error");
+    });
   });
 
 
@@ -65,7 +69,9 @@ describe("ScoreBoard", function() {
     });
   });
 
-  it ("returns error when score is invalid", function() {
-    expect(function() {scoreBoard.takeScores("X|X|X|X|X|X|X")}).toThrow(new Error("This score is invalid - please try again"))
+  describe("returns an error message when:" , function() {
+      it ("score is invalid", function() {
+      expect(scoreBoard.takeScores("X|X|X|X|X|X|X|")).toEqual("This score is invalid - please try again")
+    });
   });
 });

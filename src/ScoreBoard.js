@@ -6,16 +6,19 @@ function ScoreBoard(scoreCalculator, displayScore) {
   this.scores = [];
   this.MAXSCOREPERROLL = 10;
   this.MINSCOREPERROLL = 0;
+  this.error = "no error";
 };
 
 ScoreBoard.prototype.takeScores = function(score) {
+  this.error = "no error"
   if (this._isValid(score)) {
     return this._splitScores(score);
   } else
-  throw new Error("This score is invalid - please try again")
+    return this.error = "This score is invalid - please try again"
 };
 
 ScoreBoard.prototype._splitScores = function(score) {
+
   individualScores = score.split("");
   this._isValid(individualScores);
   for (var scoreIndex = 0; scoreIndex < score.length; scoreIndex++) {
@@ -39,9 +42,13 @@ ScoreBoard.prototype._convertToNumber = function(scoreIndex) {
 };
 
 ScoreBoard.prototype.displayTotal = function() {
-  var result =  this.scoreCalculator.calculate(this.scores);
-  this._refreshScores();
-  return this.displayScore.total(result);
+  if (this.error !== "no error") {
+    return this.displayScore.total(this.error);
+  } else {
+    var result =  this.scoreCalculator.calculate(this.scores);
+    this._refreshScores();
+    return this.displayScore.total(result);
+  }
 };
 
 ScoreBoard.prototype._refreshScores = function() {
