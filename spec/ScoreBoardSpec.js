@@ -25,5 +25,9 @@ describe("ScoreBoard", function() {
       it ("strikes into array", function() {
         expect(scoreBoard.splitScores("X|X|X|X|X|X|X|X|X|X||XX")).toEqual([10,10,10,10,10,10,10,10,10,10,10,10]);
       });
+
+      it ("0s and 9s into array", function() {
+        expect(scoreBoard.splitScores("9-|9-|9-|9-|9-|9-|9-|9-|9-|9-||")).toEqual([9,0,9,0,9,0,9,0,9,0,9,0,9,0,9,0,9,0,9,0]);
+      });
     });
 });

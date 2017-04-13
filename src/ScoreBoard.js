@@ -14,6 +14,8 @@ ScoreBoard.prototype.splitScores = function(score) {
     if (individulaScores[scoreIndex] !== '|') {
       if (this.SCORESYMBOLS.hasOwnProperty(individulaScores[scoreIndex])) {
         this.scores.push(this.SCORESYMBOLS[individulaScores[scoreIndex]])
+      } else {
+        this.scores.push(Number(individulaScores[scoreIndex]))
       }
     }
   };
