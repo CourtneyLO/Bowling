@@ -10,11 +10,16 @@ describe("ScoreBoard", function() {
 
   describe("initializes with:" , function() {
 
-    it("a constant of possible score results", function() {
-      expect(scoreBoard.SCORESYMBOLS).toEqual([{'X': 10,
-                                                '/': 10,
-                                                '-': 0}])
+    it ("an empty scores array", function() {
+      expect(scoreBoard.scores).toEqual([]);
     });
+
+    it("a constant of possible score results", function() {
+      expect(scoreBoard.SCORESYMBOLS).toEqual({'X': 10,
+                                               '/': 10,
+                                               '-': 0})
+    });
+
   });
 
 });
